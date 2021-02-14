@@ -3,6 +3,7 @@ from selenium.webdriver.common.by import By
 
 
 class AdminPage(BasePage):
+    admin_page_path = '/admin'
     USERNAME_INPUT = (By.CSS_SELECTOR, "#input-username")
     PASSWORD_INPUT = (By.CSS_SELECTOR, "#input-password")
     LOGIN_BUTTON = (By.XPATH, "//*[@type = 'submit']")
@@ -18,6 +19,9 @@ class AdminPage(BasePage):
     MENU_CATALOG = (By.CSS_SELECTOR, "#menu-catalog")
     PRODUCT_MENU = (By.XPATH, "//*[@id='menu-catalog']/ul[1]/li[2]")
     PRODUCTS_LINK = (By.LINK_TEXT, "Products")
+
+    def open_admin_page(self, url):
+        return self._open(url, self.admin_page_path)
 
     def admin_page_check_existing_of_username_input(self):
         return self._existing_of_elements(*self.USERNAME_INPUT)
@@ -69,3 +73,9 @@ class AdminPage(BasePage):
 
     def check_existing_of_products_link(self):
         return self._existing_of_elements(*self.PRODUCTS_LINK)
+
+    def go_to_admin_page(self, url):
+        self.open_admin_page(url)
+        self.wait_for_logo_on_login_page()
+        self.click_on_login_button()
+        self.wait_for_navigation_title_on_admin_page()

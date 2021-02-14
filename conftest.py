@@ -17,10 +17,10 @@ def browser(request, url):
     """ Фикстура инициализации браузера """
     browser = request.config.getoption("--browser")
     if browser == "chrome":
-        options = webdriver.ChromeOptions()
-        options.add_argument('ignore-certificate-errors')
-        options.headless = True
-        driver = webdriver.Chrome(chrome_options=options)
+        options_chr = webdriver.ChromeOptions()
+        options_chr.add_argument('ignore-certificate-errors')
+        # options_chr.headless = True
+        driver = webdriver.Chrome(options=options_chr)
     elif browser == "firefox":
         options = webdriver.FirefoxOptions()
         options.add_argument('ignore-certificate-errors')
