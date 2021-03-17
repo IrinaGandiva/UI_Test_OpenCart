@@ -1,5 +1,8 @@
 import pytest
 from selenium import webdriver
+import logging
+logging.basicConfig(level=logging.INFO, filename="logs/test_opencart_selenium.log")
+
 
 
 def pytest_addoption(parser):

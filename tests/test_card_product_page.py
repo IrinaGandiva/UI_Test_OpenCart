@@ -1,7 +1,9 @@
 from page_object.CardProguctPage import CardProductPage
+import allure
 
 
-def test_on_catalog_page(browser, url):
+@allure.title("Проверка наличия основных элементов на странице товара")
+def test_on_product_page(browser, url):
     phone_url = url + '/index.php?route=product/product&path=57&product_id=49'
     browser.get(phone_url)
     CardProductPage(browser).check_existing_of_button_cart()
