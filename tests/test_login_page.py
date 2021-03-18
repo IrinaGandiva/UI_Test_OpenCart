@@ -1,6 +1,8 @@
 from page_object.LoginPage import LoginPage
+import allure
 
 
+@allure.title("Проверка наличия основных элементов на странице логина")
 def test_on_login_page(browser, url):
     login_url = url + '/index.php?route=account/login'
     browser.get(login_url)
